@@ -1,11 +1,32 @@
+
+import json
+
+filename = 'youtube.txt'
+
 def load_data():
-    pass
+    try:
+        with open(filename,'r') as file:
+            jsonFile = json.load(file)
+            return jsonFile
+    except FileNotFoundError:
+        return [] 
+    
+def save_data_helper(videos):
+    with open (filename,'w') as file:
+        json.dump(videos,file)
 
 def list_all_videos(videos):
     pass
 
 def add_video(videos):
-    pass
+    name = input("Enter video name: ")
+    time = input("Enter video time: ")
+    video = {
+        "name": name,
+        "time": time
+    }
+    videos.append(video)
+    save_data_helper(videos)
 
 def update_video(videos):
     pass
