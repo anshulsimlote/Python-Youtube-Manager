@@ -45,7 +45,13 @@ def update_video(videos):
         print("Invalid index selected")
 
 def delete_video(videos):
-    pass
+    list_all_videos(videos)
+    index = int(input("Enter the video number to update: "))
+    if 1<= index <= len(videos):
+        del videos[index-1]
+        save_data_helper(videos)
+    else:
+        print("Invalid index selected")
 
 def main():
     videos = load_data()
